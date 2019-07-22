@@ -1,0 +1,35 @@
+<ul class="basket-list" >
+    <li *ngFor = 'let book of booksInBasket.bookArr; let i = index' class="basket-item">
+   
+    <div>
+      <h6>{{book.name}}</h6>
+    
+      <img src="{{book.img}}" alt="Image" width="80" height="100">
+    
+      <p>Author: {{book.author}}</p>
+    
+      <p>Price: {{book.price}}</p>
+    </div>
+    
+    <div class="totalBook"> 
+      <button (click)='addBook(book)'>+</button>
+    
+      <p>Total: {{book.countTheSameBooks}}</p>
+    
+    
+      <button (click)='deleteOneBook(book)'>-</button>
+    </div>
+    
+    <button (click)='deleteBook(book)' class="delete-btn">Delete book</button>
+
+   </li>
+
+   <li  class="basket-item">
+    
+   <p>Total: {{count}}</p>
+   <p>Total price: {{totalPrice}}</p>
+
+
+   </li>
+  </ul>
+  

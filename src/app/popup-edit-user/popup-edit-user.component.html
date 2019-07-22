@@ -1,0 +1,19 @@
+<form [formGroup]="myFirstForm">
+  <div class="formGroup">
+
+    <mat-form-field>
+      <input matInput placeholder="Enter Email" formControlName="email" required>
+      <mat-error *ngIf="myFirstForm.get('email').hasError('required')">email is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Password" formControlName="password" [errorStateMatcher]="matcher">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="myFirstForm.get('password').hasError('required')">
+      password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button (click)="save()">Save</button>
+
+</form>

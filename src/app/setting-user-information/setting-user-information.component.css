@@ -1,0 +1,53 @@
+
+
+.user-information {
+    width: 600px;
+
+    margin: 0 auto;
+
+    background-color: #98bcbe;
+    opacity: 0.9;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 10%;
+}
+
+.user-information-setting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.FormsForChange {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.passwords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-information-visual {
+    font-family: fantasy;
+
+    font-size: 16px;
+    font-weight: normal;
+
+   
+}
+
+.settingInformation {
+    cursor: pointer;
+
+    background-color: #c2bf2f;
+
+    padding: 10px;
+
+    border: 2px solid #d4d25b;
+    border-radius: 10px;
+}

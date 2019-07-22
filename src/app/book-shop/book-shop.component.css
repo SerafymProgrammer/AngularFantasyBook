@@ -1,0 +1,80 @@
+.book_shop_card-list {
+    z-index: -1;
+display: flex;
+flex-wrap: wrap;
+
+
+}
+
+.book_shop_card-Item {
+    font-family: fantasy;
+    background-color:#a0c7c3;
+    border: 2px solid rgb(155, 132, 132);
+    border-radius: 10px;
+
+    opacity: 0.9;
+    color: black;
+
+    width: 300px;
+    
+
+    margin: 20px;
+     
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+    
+}
+
+.book_shop_card-Item-title {
+    cursor: pointer;
+
+    text-align: center;
+}
+
+.book_shop_card-Item-author {
+    
+    font-size: 20px;
+}
+
+.book_shop_card-Item-logo {
+    margin: 0 auto;
+}
+
+button{
+
+    border: none;
+    border-radius: 20px;
+
+    width: 100px;
+    
+    padding: 10px;
+
+    background-color: rgb(106, 156, 113);
+
+    margin: 0 auto;
+   
+}
+
+.search-book {
+
+    width: 300px;
+
+    padding: 10px;
+
+    border: 2px solid rgb(155, 132, 132);
+
+    background-color: #ccc5c5;
+    opacity: 0.8;
+
+    margin: 0 auto;
+
+    margin-left: 35%;
+
+}
+
+.book-shop {
+margin: 0 auto;
+}

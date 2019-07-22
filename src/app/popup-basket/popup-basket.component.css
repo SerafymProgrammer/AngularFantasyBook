@@ -1,0 +1,28 @@
+.basket-list {
+    list-style: none;
+
+    width: 300px;
+
+
+}
+
+.basket-item {
+    display: flex;
+
+}
+
+.delete-btn {
+    height: 40px;
+
+    border: none;
+    background-color: #ecaeae;
+    opacity: 0.9;
+}
+
+.totalBook {
+
+    height: 40px;
+    display: flex;
+
+    align-items: center;
+}

@@ -1,0 +1,28 @@
+<div class="book-element">
+
+    <div class="book-element-info">
+        <img src="{{book.img}}" alt="Image" width="300" height="400">
+    
+        <h2>{{book.name}}</h2>
+    
+        <p>Author: {{book.author}}</p>
+
+        <p>Price: {{book.price}}</p>
+
+        <button (click) = 'addToBasket()' class="buy-book-btn"> Add to basket</button>
+    </div>
+
+    
+    
+    <div *ngIf = 'book.description' class="book-element-description">
+        <p *ngIf='!showAll '>{{book.description | descriptionLenth}}</p>
+        <p *ngIf='showAll'>{{book.description}}</p>
+    
+        <button *ngIf='!showAll' (click)='showAllText()' class="show-hide-text">Show All</button>
+        <button *ngIf='showAll' (click)='hideText()' class="show-hide-text">Hide</button>
+    </div>
+
+   
+    
+</div>
+

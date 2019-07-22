@@ -1,0 +1,18 @@
+
+
+<form [formGroup]="myFirstForm" class="formGroup">
+
+        <label for="email"><b>Email</b></label> {{email}}
+        <input type="text" placeholder="Enter Email"  formControlName="email" >
+
+        <!-- <div class="error" *ngIf="isControlInvalid('email')">
+            Обязательное поле
+        </div> -->
+      
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" formControlName="password" name="password" required>
+      
+        <button type="submit" (click)='signIn()' class="loginBtn" >Login</button>
+  
+       
+    </form>

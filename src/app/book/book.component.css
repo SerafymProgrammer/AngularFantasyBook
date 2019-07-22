@@ -1,0 +1,30 @@
+.book-element {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+
+
+    width: 30%;
+    margin: 0 auto;
+
+    background-color: rgb(143, 194, 183);
+    display: flex;
+    justify-content: space-around;
+
+    opacity: 0.9;
+}
+
+.book-element-info {
+    margin: 30px 0;
+}
+
+.book-element-description {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+}
+
+.show-hide-text {
+    border: none;
+    background:none;
+    color: #887f7f;
+}

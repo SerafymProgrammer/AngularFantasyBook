@@ -1,0 +1,19 @@
+
+  <input type="text" #movieSearchInput class="search-book"  placeholder="Type any movie name" >
+
+  <ul class="book_shop_card-list">
+    <li class="book_shop_card-Item" *ngFor='let book of booksWithCount'>
+      <h2 (click)='postBook(book)' class="book_shop_card-Item-title">{{book.name}}</h2>
+
+      <img src="{{book.img}}" alt="Image" width="150" height="200" class="book_shop_card-Item-logo">
+
+      <p class="book_shop_card-Item-author">Author: {{book.author}}</p>
+
+      <p class="book_shop_card-Item-description" *ngIf = 'book.description'>{{book.description | descriptionLenth}}</p>
+
+      <p class="book_shop_card-Item-author">Price: {{book.price}}</p>
+
+      <button (click)='addToBasket(book)'> Add to basket</button>
+    </li>
+
+  </ul>

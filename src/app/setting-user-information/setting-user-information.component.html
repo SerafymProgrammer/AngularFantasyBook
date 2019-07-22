@@ -1,0 +1,53 @@
+<section class="user-information">
+  <h2>User Information</h2>
+  <a class="settingInformation" (click) = 'settingInformation()' *ngIf="show">Изменить данные</a>
+
+  
+  <div class="user-information-visual" *ngIf="show"> 
+   
+   
+    <p>Email: {{email}}</p>
+
+    <p>Password: {{password}}</p>
+
+  </div>
+
+  <div class="user-information-setting" *ngIf='!show'>
+  
+  
+    <!-- <span style="color:red;" *ngIf="message">{{message}}</span> -->
+  
+    <!-- <img [src]="imgURL" height="40" width="60" *ngIf="imgURL">
+    <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+   -->
+    <form [formGroup]="myFirstForm" class="FormsForChange">
+  
+  
+  
+      <mat-form-field>
+        <input matInput  formControlName="email" required>
+        <!-- <mat-error *ngIf="myFirstForm.get('email').hasError('required')">email is required</mat-error> -->
+      </mat-form-field>
+  
+  
+  
+      <button type="button" (click)='showChangePasswordsClick()' *ngIf='!showChangePasswords'>Изменить пароль</button>
+  
+      <div class="passwords" *ngIf='showChangePasswords'>
+  
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" formControlName="password" name="password" required>
+  
+        <label for="confirmedPassword"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" formControlName="confirmedPassword" name="confirmedPassword"
+          required>
+  
+      </div>
+
+     <button type="submit" (click) = 'save()'>Save</button>
+     <button type="button" (click) = 'cancel()'>Cancel</button>
+     
+      
+    </form>
+  </div> 
+</section>

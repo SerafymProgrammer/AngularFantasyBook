@@ -1,0 +1,17 @@
+.full-width-table {
+    width:100%;
+    }
+    
+    
+    .admin-table {
+      width: 50%;
+       margin: 0 auto;
+    }
+    
+    .user-popup {
+      width: 300px;
+    
+      margin: 0 auto;
+      background-color: aquamarine;
+      opacity: 0.9;
+    }

@@ -1,0 +1,26 @@
+<nav class="nav-link-list">
+
+  
+  <a routerLink="" class="nav-link nav-link-logo" >Краски Жизни</a>
+
+  <a routerLink="" class="nav-link" >Главная</a>
+  <a routerLink="/book" class="nav-link" >Books</a>
+  <a routerLink="/login" class="nav-link" *ngIf="!isHidden" >Sign in</a>
+  <a routerLink="/register" class="nav-link"  *ngIf="!isHidden" >Create account</a>
+  <a class="nav-link user" (mouseenter) = 'mouseHover()' (mouseleave) ='mouseLeave()'  *ngIf="isHidden" > hello {{email}} 
+    
+    <img [src]="imgURL" height="40" width="60" *ngIf="imgURL" class="user-avatar"> 
+  
+      <nav class="nav-bar " [class.nav-bar-hidden] = "navBarHidden">
+        <a routerLink="/admin" class="nav-bar--link" >Admin</a>
+        <a (click) = 'settingUser()' class="nav-bar--link">User Information</a>
+      </nav>
+  
+  </a>
+  <a class="nav-link basketRelative"  *ngIf="isHidden" (click) = 'openDialogAddBookInBasket()'> <img src="./img/basket-icon.svg" alt=""> 
+       {{totalPrice}}$
+  </a>
+  <a class="nav-link"  *ngIf="isHidden" (click) = 'logOut()' > log out </a>
+ 
+
+</nav>
