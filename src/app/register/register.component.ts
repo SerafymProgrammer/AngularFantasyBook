@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../services/user.service';
-import { User } from '../Interfaces/user';
+import { UserRegister, User
+ } from '../Interfaces/user';
 
 
 @Component({
@@ -49,7 +50,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.userService.postDataUser({id: null, email: this.myFirstForm.value.email, password: this.myFirstForm.value.password})
-      .subscribe((da) => { this.router.navigate(['/login', { email: this.myFirstForm.value.email }]); },
+      .subscribe(() => { this.router.navigate(['/login', { email: this.myFirstForm.value.email }]); },
         error => console.log(error)
       );
 

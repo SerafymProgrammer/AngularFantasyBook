@@ -12,10 +12,10 @@ export class ParamInterceptor implements HttpInterceptor {
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const currentUser = JSON.parse(localStorage.getItem('user'));
-        if (currentUser && currentUser.data) {
+        if (currentUser && currentUser.userToken) {
             req = req.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${currentUser.data}`
+                    Authorization: `Bearer ${currentUser.userToken}`
                 }
             });
 

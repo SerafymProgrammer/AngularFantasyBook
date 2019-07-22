@@ -7,6 +7,7 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 import {Subscription} from 'rxjs';
 import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';
+import jwt from 'jwt-decode';
 
 
 
@@ -45,6 +46,11 @@ export class AppLoginComponent implements OnInit {
     });
   }
 
+  decodeToLocalStorage = (data:any) => {
+    const decode: User = jwt(data.token);
+    localStorage.setItem('user', JSON.stringify({userToken: data.token, email: decode.email, id: decode.id, img: data.img, isAdmin: decode.isAdmin}));
+}
+
   async  signIn() {
 
      this.userService.authorizationUser(this.myFirstForm.value).subscribe(data => {
@@ -54,7 +60,9 @@ export class AppLoginComponent implements OnInit {
        }
        this.router.navigate(['/']);
        this.toastr.success('Hello', 'SUCCESS');
-       localStorage.setItem('user', JSON.stringify(Object.assign(data, { email: this.myFirstForm.value.email })));
+       
+       this.decodeToLocalStorage(data);
+      // localStorage.setItem('user', JSON.stringify(Object.assign(data, { email: this.myFirstForm.value.email })));
        localStorage.setItem('basket', JSON.stringify({
          bookArr: [],
          totalBook: {

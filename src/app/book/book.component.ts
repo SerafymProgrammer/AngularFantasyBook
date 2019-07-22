@@ -48,15 +48,13 @@ export class BookComponent implements OnInit {
   }
 
   addToBasket() {
-    let b = JSON.parse(localStorage.getItem('basket'));
-    b.push(this.book);
-    b = this.bookService.totalScoreBooks(b);
-    this.totalPrice = 0;
-    for (const bookEl of b) {
-      this.totalPrice += parseInt(bookEl.price, 10) * bookEl.countTheSameBooks;
-    }
-    this.totalPriceService.addPriceEvent(this.totalPrice);
-    localStorage.setItem('basket', JSON.stringify(b));
+      // tslint:disable-next-line:prefer-const
+      let booksInBasket = JSON.parse(localStorage.getItem('basket'));
+      // tslint:disable-next-line:no-unused-expression
+      booksInBasket.bookArr.push(this.book);
+      booksInBasket = this.bookService.totalScoreBooks(booksInBasket);
+     // this.totalPriceService.addPriceEvent(this.totalPrice);
+      localStorage.setItem('basket', JSON.stringify(booksInBasket));
   }
 
   showAllText() {
