@@ -10,7 +10,7 @@ import { AddElementService } from '../services/add-element.service';
 @Component({
   selector: 'app-setting-user-information',
   templateUrl: './setting-user-information.component.html',
-  styleUrls: ['./setting-user-information.component.css']
+  styleUrls: ['./setting-user-information.component.scss']
 })
 export class SettingUserInformationComponent implements OnInit {
   show = true;

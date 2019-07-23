@@ -14,7 +14,7 @@ import jwt from 'jwt-decode';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    styleUrls: ['./login.component.scss'],
 
   })
 
@@ -46,9 +46,13 @@ export class AppLoginComponent implements OnInit {
     });
   }
 
-  decodeToLocalStorage = (data:any) => {
+  decodeToLocalStorage = (data: any) => {
     const decode: User = jwt(data.token);
-    localStorage.setItem('user', JSON.stringify({userToken: data.token, email: decode.email, id: decode.id, img: data.img, isAdmin: decode.isAdmin}));
+    localStorage.setItem('user', JSON.stringify({userToken: data.token,
+       email: decode.email,
+       id: decode.id,
+       img: data.img,
+       isAdmin: decode.isAdmin}));
 }
 
   async  signIn() {
@@ -60,7 +64,6 @@ export class AppLoginComponent implements OnInit {
        }
        this.router.navigate(['/']);
        this.toastr.success('Hello', 'SUCCESS');
-       
        this.decodeToLocalStorage(data);
       // localStorage.setItem('user', JSON.stringify(Object.assign(data, { email: this.myFirstForm.value.email })));
        localStorage.setItem('basket', JSON.stringify({

@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-popup-edit-user',
   templateUrl: './popup-edit-user.component.html',
-  styleUrls: ['./popup-edit-user.component.css']
+  styleUrls: ['./popup-edit-user.component.scss']
 })
 export class PopupEditUserComponent implements OnInit {
 

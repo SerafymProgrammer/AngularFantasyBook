@@ -6,7 +6,7 @@ import { TotalPriceService } from '../services/total-price.service';
 @Component({
   selector: 'app-popup-basket',
   templateUrl: './popup-basket.component.html',
-  styleUrls: ['./popup-basket.component.css']
+  styleUrls: ['./popup-basket.component.scss']
 })
 export class PopupBasketComponent implements OnInit {
 

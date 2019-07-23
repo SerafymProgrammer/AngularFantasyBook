@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-popup-add-user',
   templateUrl: './popup-add-user.component.html',
-  styleUrls: ['./popup-add-user.component.css']
+  styleUrls: ['./popup-add-user.component.scss']
 })
 export class PopupAddUserComponent implements OnInit {
 

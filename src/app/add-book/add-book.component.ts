@@ -12,7 +12,7 @@ import { AddElementService } from '../services/add-element.service';
 @Component({
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.css']
+  styleUrls: ['./add-book.component.scss']
 })
 export class AddBookComponent implements OnInit {
   name: string;

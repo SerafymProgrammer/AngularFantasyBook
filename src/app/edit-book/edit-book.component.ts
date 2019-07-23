@@ -10,7 +10,7 @@ import { AddElementService } from '../services/add-element.service';
 @Component({
   selector: 'app-edit-book',
   templateUrl: './edit-book.component.html',
-  styleUrls: ['./edit-book.component.css']
+  styleUrls: ['./edit-book.component.scss']
 })
 export class EditBookComponent implements OnInit {
   name: string;

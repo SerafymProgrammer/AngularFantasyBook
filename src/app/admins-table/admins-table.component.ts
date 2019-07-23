@@ -16,7 +16,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-admins-table',
   templateUrl: './admins-table.component.html',
-  styleUrls: ['./admins-table.component.css'],
+  styleUrls: ['./admins-table.component.scss'],
 })
 export class AdminsTableComponent implements AfterViewInit, OnInit {
 

@@ -12,7 +12,7 @@ import { BookService } from '../services/book.service';
 @Component({
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
-  styleUrls: ['./books-table.component.css']
+  styleUrls: ['./books-table.component.scss']
 })
 export class BooksTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

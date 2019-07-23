@@ -13,7 +13,7 @@ export interface AdminsTableItem {
 }
 
 // TODO: replace this with real data from your application
-const ADMIN_DATA: AdminsTableItem[] = [ 
+const ADMIN_DATA: AdminsTableItem[] = [
 ];
 
 /**
@@ -27,18 +27,9 @@ export class AdminsTableDataSource extends DataSource<AdminsTableItem> {
   sort: MatSort;
 
   ADMIN_DATA: AdminsTableItem[] ;
- 
- 
-
   constructor() {
     super();
-    
   }
-  
-  
-    
-        
-  
 
   /**
    * Connect this data source to the table. The table will only update when
@@ -86,7 +77,6 @@ export class AdminsTableDataSource extends DataSource<AdminsTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-       
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }

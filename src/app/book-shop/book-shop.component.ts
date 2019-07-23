@@ -14,7 +14,7 @@ import { TotalPriceService } from '../services/total-price.service';
 @Component({
   selector: 'app-book-shop',
   templateUrl: './book-shop.component.html',
-  styleUrls: ['./book-shop.component.css']
+  styleUrls: ['./book-shop.component.scss']
 })
 export class BookShopComponent implements OnInit {
 
