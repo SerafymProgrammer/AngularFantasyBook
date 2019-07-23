@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../Interfaces/user';
 import { Book } from '../Interfaces/book';
 import { TotalPriceService } from './total-price.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,31 +15,31 @@ export class BookService {
 
   getDataBooks(): Observable<Book[]> {
 
-    return this.http.get<Book[]>('http://localhost:3000/books/');
+    return this.http.get<Book[]>(`${environment.apiUrl}/books/`);
   }
 
   getDataBasket() {
 
-    return this.http.get<Book[]>('http://localhost:3000/basket/');
+    return this.http.get<Book[]>(`${environment.apiUrl}/basket/`);
   }
 
   deleteBook(book: Book) {
-    return this.http.delete(`http://localhost:3000/books/${book.id}`);
+    return this.http.delete(`${environment.apiUrl}/books/${book.id}`);
   }
 
   postDataBook(book: Book) {
 
-    return this.http.post('http://localhost:3000/books/', book);
+    return this.http.post(`${environment.apiUrl}/books/`, book);
   }
 
   postDataBasket(book: Book) {
 
-    return this.http.post('http://localhost:3000/basket/', book);
+    return this.http.post(`${environment.apiUrl}/basket/`, book);
   }
 
   putDataBook(book: Book, id: number) {
 
-    return this.http.put(`http://localhost:3000/books/${id}/`, book);
+    return this.http.put(`${environment.apiUrl}/books/${id}/`, book);
   }
 
 

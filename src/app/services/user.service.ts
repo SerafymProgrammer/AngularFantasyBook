@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserRegister, User } from '../Interfaces/user';
 import { Book } from '../Interfaces/book';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -17,20 +18,20 @@ export class UserService {
   getDataUser(): Observable<User[]> {
 
     if (JSON.parse(localStorage.getItem('user')).isAdmin) {
-      return this.http.get<User[]>('http://localhost:3000/users');
+      return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
   }
 
   postDataUser(user: UserRegister) {
     if (localStorage.getItem('user')) {
       if (JSON.parse(localStorage.getItem('user')).isAdmin) {
-        return this.http.post('http://localhost:3000/auth/register', user);
+        return this.http.post(`${environment.apiUrl}/auth/register`, user);
       } else {
         return;
       }
     }
 
-    return this.http.post('http://localhost:3000/auth/register', user);
+    return this.http.post(`${environment.apiUrl}/auth/register`, user);
 
   }
 
@@ -40,7 +41,7 @@ export class UserService {
       this.isAdmin = true;
     }
 
-    return this.http.put(`http://localhost:3000/users/${id}`, Object.assign(user, { isAdmin: this.isAdmin }));
+    return this.http.put(`${environment.apiUrl}/users/${id}`, Object.assign(user, { isAdmin: this.isAdmin }));
   }
 
   putCurrentUser(user: UserRegister, id: number) {
@@ -49,12 +50,12 @@ export class UserService {
       this.isAdmin = true;
     }
 
-    return this.http.put(`http://localhost:3000/users/currUser/${id}`, Object.assign(user, { isAdmin: this.isAdmin }));
+    return this.http.put(`${environment.apiUrl}/users/currUser/${id}`, Object.assign(user, { isAdmin: this.isAdmin }));
   }
 
   deleteUser(user: User) {
 
-    return this.http.delete(`http://localhost:3000/users/${user.id}`);
+    return this.http.delete(`${environment.apiUrl}/users/${user.id}`);
 
    }
 
@@ -62,6 +63,6 @@ export class UserService {
     if (user.email === 'admin@gmail.com') {
       this.isAdmin = true;
     }
-    return this.http.post<User>('http://localhost:3000/auth/login',  Object.assign(user, { isAdmin: this.isAdmin }));
+    return this.http.post<User>(`${environment.apiUrl}/auth/login`,  Object.assign(user, { isAdmin: this.isAdmin }));
    }
 }
