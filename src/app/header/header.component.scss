@@ -14,56 +14,35 @@
     background-color: #a0b8ae;
     opacity: 0.8;
 
-}
-
-.nav-link {
-    list-style: none;
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
+    & .nav-link {
+        list-style: none;
+        text-decoration: none;
+        font-size: 18px;
+        color: black;
+        
+        width: 200px;
+        padding: 30px 0;
+        text-align: center;
+    }
     
-    width: 200px;
-    padding: 30px 0;
-    text-align: center;
-}
+    & .nav-link:hover {
+        background-color: #498b78;
+        border-radius: 20px;
+    }
+    & .nav-link:focus {
+        background-color: #498b78;
+        border-radius: 20px;
+    }
 
-.nav-link:hover {
-    background-color: #498b78;
-    border-radius: 20px;
-}
-.nav-link:focus {
-    background-color: #498b78;
-    border-radius: 20px;
-}
 
-.hidden {
-    display: none;
-}
+    & .user {
+        position: relative;
 
-.nav-link-logo {
-   background-color: #5673b3;
-   font-family: fantasy;
-   color: #222f4d;
-   font-size: 22px;
-   font-weight: bold;
+        
+    }
+   
+    
 
-}
-.nav-link-logo:hover {
-    background-color: #62498b;
-}
-.user {
-    position: relative;
-}
-
-.imgUser {
-    position: absolute;
-
-    top: 30px;
-    right: 20px;
-    width: 20px;
-    height: 20px;
-    background-image: url('./img/settingUser.png');
-    background-size: cover;
 }
 
 .nav-bar {
@@ -72,10 +51,7 @@
 
     position: absolute;
     bottom: -165px;
-
 }
-
-
 
 .nav-bar--link {
     list-style: none;
@@ -91,6 +67,34 @@
 
 }
 
+
+
+
+.nav-link-logo {
+   background-color: #5673b3;
+   font-family: fantasy;
+   color: #222f4d;
+   font-size: 22px;
+   font-weight: bold;
+
+}
+.nav-link-logo:hover {
+    background-color: #62498b;
+}
+
+
+.imgUser {
+    position: absolute;
+
+    top: 30px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background-image: url('./img/settingUser.png');
+    background-size: cover;
+}
+
+
 .nav-bar-hidden {
     display: none;
 }
@@ -99,23 +103,3 @@
     border-radius: 50%;
 }
 
-.basket-list {
-    display: flex;
-    flex-direction: column;
-
-    width: 700px;
-    height: 300px;
-
-    background-color: aliceblue;
-
-    position: absolute;
-    bottom: -318px;
-}
-
-.basket-item {
-    display: flex;
-}
-
-.basketRelative {
-    position: relative;
-}
