@@ -5,6 +5,7 @@ import { FormGroup, ReactiveFormsModule, FormBuilder, FormArray, Validators} fro
 import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-popup-add-user',
@@ -27,7 +28,8 @@ export class PopupAddUserComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<PopupAddUserComponent>,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) {
 
   }
@@ -57,10 +59,14 @@ export class PopupAddUserComponent implements OnInit {
 
     this.data = { email: this.email, password: this.password };
 
-    this.userService.postDataUser(this.myFirstForm.value)
+    this.userService.postDataUser({id: null, email: this.email, password: this.password, img: ''})
       .subscribe(() => {
-        this.update.emit(this.data);
-        this.dialogRef.close();
+        this.spinner.show();
+        setTimeout(() => {
+          this.update.emit(this.data);
+          this.dialogRef.close();
+          this.spinner.hide();
+        }, 2000);
       }, error => console.log(error)
       );
   }

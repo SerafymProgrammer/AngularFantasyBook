@@ -5,6 +5,7 @@ import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';
 import { ChooseImageService } from '../services/chooseImage.service';
 import { AddElementService } from '../services/add-element.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -31,9 +32,11 @@ export class SettingUserInformationComponent implements OnInit {
     private dataService: DataSubjectService,
     private userService: UserService,
     private chooseImageService: ChooseImageService,
-    private addElementService: AddElementService) {
+    private addElementService: AddElementService,
+    private spinner: NgxSpinnerService) {
    }
    ngOnInit() {
+    this.spinner.show();
     this.createForm();
   }
 
@@ -70,9 +73,14 @@ export class SettingUserInformationComponent implements OnInit {
 
     this.userService.putCurrentUser({ id: this.id, email: this.email, password: this.password}, currentUser.id)
       .subscribe(() => {
-        localStorage.setItem('user', JSON.stringify(currentUser));
-        this.dataService.triggerEvent({ email: this.email});
-        this.show = true;
+        this.spinner.show();
+
+        setTimeout(() => {
+           localStorage.setItem('user', JSON.stringify(currentUser));
+           this.dataService.triggerEvent({ email: this.email});
+           this.show = true;
+           this.spinner.hide();
+        }, 2000);
       }, error => console.log(error)
       );
   }

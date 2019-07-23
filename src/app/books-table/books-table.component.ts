@@ -7,6 +7,7 @@ import { AddBookComponent } from '../add-book/add-book.component';
 import { EditBookComponent } from '../edit-book/edit-book.component';
 import { SelectionModel } from '@angular/cdk/collections';
 import { BookService } from '../services/book.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -31,7 +32,9 @@ export class BooksTableComponent implements AfterViewInit, OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private bookService: BookService) { }
+    private bookService: BookService,
+    private spinner: NgxSpinnerService
+    ) { }
 
   updateTable() {
     this.dataSource = new MatTableDataSource<BooksTableItem>();

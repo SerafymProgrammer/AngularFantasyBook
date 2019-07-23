@@ -5,6 +5,7 @@ import { Book } from '../Interfaces/book';
 import { BookService } from '../services/book.service';
 import { ChooseImageService } from '../services/chooseImage.service';
 import { AddElementService } from '../services/add-element.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -35,7 +36,8 @@ export class AddBookComponent implements OnInit {
               public dialogRef: MatDialogRef<AddBookComponent>,
               private bookService: BookService,
               private chooseImageService: ChooseImageService,
-              private addElementService: AddElementService) { }
+              private addElementService: AddElementService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.createForm();
@@ -71,8 +73,14 @@ export class AddBookComponent implements OnInit {
 
     this.bookService.postDataBook(Object.assign(this.myFirstForm.value, { img: imgForPost}))
       .subscribe(() => {
-        this.update.emit(this.book);
-        this.dialogRef.close();
+        this.spinner.show();
+
+        setTimeout(() => {
+          this.update.emit(this.book);
+          this.dialogRef.close();
+          this.spinner.hide();
+        }, 2000);
+
       }, error => console.log(error)
       );
   }

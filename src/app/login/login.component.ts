@@ -8,6 +8,7 @@ import {Subscription} from 'rxjs';
 import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';
 import jwt from 'jwt-decode';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -32,6 +33,7 @@ export class AppLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private dataService: DataSubjectService,
     private userService: UserService,
+    private spinner: NgxSpinnerService
    ) {
     this.email = route.snapshot.params.email;
   }
@@ -47,34 +49,36 @@ export class AppLoginComponent implements OnInit {
   }
 
   decodeToLocalStorage = (data: any) => {
-    const decode: User = jwt(data.token);
-    localStorage.setItem('user', JSON.stringify({userToken: data.token,
-       email: decode.email,
-       id: decode.id,
-       img: data.img,
-       isAdmin: decode.isAdmin}));
+    const decode: User = jwt(data.userToken);
+    localStorage.setItem('user', JSON.stringify(
+      {userToken: data.userToken, email: decode.email, id: decode.id, img: data.img, isAdmin: decode.isAdmin}));
 }
 
-  async  signIn() {
+  signIn() {
 
-     this.userService.authorizationUser(this.myFirstForm.value).subscribe(data => {
-       if (!data) {
+    this.userService.authorizationUser(this.myFirstForm.value).subscribe(data => {
+      if (!data) {
         this.toastr.error('Invalid data', 'ERROR');
         return;
-       }
-       this.router.navigate(['/']);
-       this.toastr.success('Hello', 'SUCCESS');
-       this.decodeToLocalStorage(data);
-      // localStorage.setItem('user', JSON.stringify(Object.assign(data, { email: this.myFirstForm.value.email })));
-       localStorage.setItem('basket', JSON.stringify({
-         bookArr: [],
-         totalBook: {
-           totalCount: 0,
-           totalPrice: 0
-         }
-       }));
-       this.dataService.triggerEvent({ email: this.myFirstForm.value.email });
-     });
+      }
+      this.spinner.show();
+      setTimeout(() => {
+        this.router.navigate(['/']);
+        this.toastr.success('Hello', 'SUCCESS');
+        this.decodeToLocalStorage(data);
+        // localStorage.setItem('user', JSON.stringify(Object.assign(data, { email: this.myFirstForm.value.email })));
+        localStorage.setItem('basket', JSON.stringify({
+          bookArr: [],
+          totalBook: {
+            totalCount: 0,
+            totalPrice: 0
+          }
+        }));
+        this.dataService.triggerEvent({ email: this.myFirstForm.value.email });
+        this.spinner.hide();
+      }, 2000);
+
+    });
   }
 }
 

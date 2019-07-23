@@ -8,6 +8,7 @@ import { fromEvent } from 'rxjs';
 import { Book } from '../Interfaces/book';
 import { BookService } from '../services/book.service';
 import { TotalPriceService } from '../services/total-price.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -26,15 +27,22 @@ export class BookShopComponent implements OnInit {
   constructor(
     private router: Router,
     private bookService: BookService,
-    private totalPriceService: TotalPriceService
+    private totalPriceService: TotalPriceService,
+    private spinner: NgxSpinnerService
   ) { }
   ngOnInit() {
     this.bookService.getDataBooks().subscribe(data => {
-      this.books = data;
-      this.booksWithCount = this.books;
-      for (const bookEl of this.booksWithCount) {
+
+      this.spinner.show();
+
+      setTimeout(() => {
+        this.books = data;
+        this.booksWithCount = this.books;
+        for (const bookEl of this.booksWithCount) {
           bookEl.countTheSameBooks = 0;
-      }
+        }
+        this.spinner.hide();
+      }, 2000);
     });
     fromEvent(this.movieSearchInput.nativeElement, 'keyup').pipe(
       map((event: any) => {

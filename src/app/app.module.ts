@@ -34,10 +34,8 @@ import { UserService } from './services/user.service';
 import { BookService } from './services/book.service';
 import { ChooseImageService } from './services/chooseImage.service';
 import { DescriptionLenthPipe } from './description-lenth.pipe';
-import { JwtInterceptor } from './jwtInterceptor.interceptor';
-
-
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {LoadingBarModule, LoadingBarService} from 'ngx-loading-bar';
 
 @NgModule({
   declarations: [
@@ -73,7 +71,9 @@ import { JwtInterceptor } from './jwtInterceptor.interceptor';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule,
+    LoadingBarModule
   ],
   entryComponents: [PopupEditUserComponent, PopupAddUserComponent, AddBookComponent, EditBookComponent, PopupBasketComponent],
   providers: [DataSubjectService, AuthGuard, AuthGuardUser, UserService, BookService, ChooseImageService, {

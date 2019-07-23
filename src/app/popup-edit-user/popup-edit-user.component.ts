@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-popup-edit-user',
@@ -26,7 +27,8 @@ export class PopupEditUserComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<PopupEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    private userService: UserService ) {
+    private userService: UserService,
+    private spinner: NgxSpinnerService ) {
   }
 
   ngOnInit() {
@@ -52,8 +54,13 @@ export class PopupEditUserComponent implements OnInit {
     this.data.user = { id: this.data.user.id, email: this.email, password: this.password };
     this.userService.putDataUser(this.myFirstForm.value, this.data.user.id)
       .subscribe(() => {
-        this.update.emit(this.data.user);
-        this.dialogRef.close();
+        this.spinner.show();
+        setTimeout(() => {
+          this.update.emit(this.data.user);
+          this.dialogRef.close();
+          this.spinner.hide();
+        }, 2000);
+
       }, error => console.log(error));
   }
 }

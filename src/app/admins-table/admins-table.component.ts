@@ -10,6 +10,8 @@ import { PopupAddUserComponent } from '../popup-add-user/popup-add-user.componen
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { UserService } from '../services/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 
 
@@ -42,14 +44,23 @@ export class AdminsTableComponent implements AfterViewInit, OnInit {
 
   constructor(public dialog: MatDialog,
               private toastr: ToastrService,
-              private userService: UserService
+              private userService: UserService,
+              private spinner: NgxSpinnerService
          ) {
   }
 
   async ngOnInit() {
+
+
+
     this.dataSource = new MatTableDataSource<AdminsTableItem>();
     await this.userService.getDataUser().subscribe(data => {
-      this.dataSource.data = data;
+      this.spinner.show();
+
+      setTimeout(() => {
+        this.dataSource.data = data;
+        this.spinner.hide();
+      }, 2000);
     });
     this.table.dataSource = this.dataSource;
   }

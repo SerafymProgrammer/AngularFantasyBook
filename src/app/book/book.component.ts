@@ -8,6 +8,7 @@ import { BookElementSubscribeService } from '../services/book-element-subscribe.
 import { Book } from '../Interfaces/book';
 import { BookService } from '../services/book.service';
 import { TotalPriceService } from '../services/total-price.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class BookComponent implements OnInit {
     private bookElementSubscribeService: BookElementSubscribeService,
     private activateRoute: ActivatedRoute,
     private bookService: BookService,
-    private totalPriceService: TotalPriceService) {
+    private totalPriceService: TotalPriceService,
+    private spinner: NgxSpinnerService) {
   }
 
 
@@ -37,12 +39,18 @@ export class BookComponent implements OnInit {
     // this.book = data.filter(x => {
     //   return x.id === this.id;
     // })[1];
-    for (const el of data) {
-      console.log(el);
-      if (el.id == this.id) {
-       this.book = el;
+    this.spinner.show();
+
+    setTimeout(() => {
+      for (const el of data) {
+        console.log(el);
+        if (el.id == this.id) {
+          this.book = el;
+        }
       }
-    }
+      this.spinner.hide();
+    }, 2000);
+
     });
 
   }

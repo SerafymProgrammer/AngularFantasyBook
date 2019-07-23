@@ -10,6 +10,7 @@ export interface UserRegister {
     id: number;
     email: string;
     password: string;
+    img?: string;
 }
 
 

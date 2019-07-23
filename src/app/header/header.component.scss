@@ -14,35 +14,37 @@
     background-color: #a0b8ae;
     opacity: 0.8;
 
-    & .nav-link {
-        list-style: none;
-        text-decoration: none;
-        font-size: 18px;
-        color: black;
-        
-        width: 200px;
-        padding: 30px 0;
-        text-align: center;
-    }
-    
-    & .nav-link:hover {
-        background-color: #498b78;
-        border-radius: 20px;
-    }
-    & .nav-link:focus {
-        background-color: #498b78;
-        border-radius: 20px;
-    }
-
-
-    & .user {
-        position: relative;
-
-        
-    }
+  
    
     
 
+}
+
+ .nav-link {
+    list-style: none;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    
+    width: 200px;
+    padding: 30px 0;
+    text-align: center;
+}
+
+ .nav-link:hover {
+    background-color: #498b78;
+    border-radius: 20px;
+}
+.nav-link:focus {
+    background-color: #498b78;
+    border-radius: 20px;
+}
+
+
+ .user {
+    position: relative;
+
+    
 }
 
 .nav-bar {
@@ -66,8 +68,6 @@
     background-color: #a0b8ae;
 
 }
-
-
 
 
 .nav-link-logo {

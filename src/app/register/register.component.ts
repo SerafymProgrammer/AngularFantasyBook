@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../services/user.service';
-import { UserRegister, User
- } from '../Interfaces/user';
+import { UserRegister, User} from '../Interfaces/user';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -26,12 +26,14 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private userService: UserService ) {
+    private userService: UserService,
+    private spinner: NgxSpinnerService ) {
 
     this.createForm();
   }
 
   ngOnInit() {
+   // this.spinner.show();
   }
 
   createForm() {
@@ -42,15 +44,21 @@ export class RegisterComponent implements OnInit {
 
     });
   }
-
   submit() {
+
     if ((this.myFirstForm.value.password === this.myFirstForm.value.confirmedPassword) && this.myFirstForm.status !== 'VALID') {
       this.toastr.error('Invalid email or passwords not equal', 'ERROR');
       return;
     }
-
-    this.userService.postDataUser({id: null, email: this.myFirstForm.value.email, password: this.myFirstForm.value.password})
-      .subscribe(() => { this.router.navigate(['/login', { email: this.myFirstForm.value.email }]); },
+    this.userService.postDataUser({id: null, email: this.myFirstForm.value.email, password: this.myFirstForm.value.password, img: ''})
+      .subscribe(() => {
+        this.spinner.show();
+        setTimeout(() => {
+          /** spinner ends after 5 seconds */
+          this.spinner.hide();
+          this.router.navigate(['/login', { email: this.myFirstForm.value.email }]);
+        }, 2000);
+         },
         error => console.log(error)
       );
 

@@ -5,6 +5,7 @@ import { Book } from '../Interfaces/book';
 import { BookService } from '../services/book.service';
 import { ChooseImageService } from '../services/chooseImage.service';
 import { AddElementService } from '../services/add-element.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class EditBookComponent implements OnInit {
     public dialogRef: MatDialogRef<EditBookComponent>,
     private chooseImageService: ChooseImageService,
     private addElementService: AddElementService,
+    private spinner: NgxSpinnerService,
     @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit() {
@@ -65,19 +67,23 @@ export class EditBookComponent implements OnInit {
     if (this.myFirstForm.status !== 'VALID') {
       return;
     }
-
-
     this.book = { name: this.name, author: this.author, img: this.imgURL };
+
     this.bookService.putDataBook(this.bookOfPut, this.data.book.id)
       .subscribe(() => {
-        this.update.emit({
-          id: this.data.book.id,
-          name: this.name,
-          author: this.author,
-          img: this.imgURL,
-          price: '' + this.myFirstForm.value.price
-        });
-        this.dialogRef.close();
+        this.spinner.show();
+
+        setTimeout(() => {
+          this.update.emit({
+            id: this.data.book.id,
+            name: this.name,
+            author: this.author,
+            img: this.imgURL,
+            price: '' + this.myFirstForm.value.price
+          });
+          this.dialogRef.close();
+          this.spinner.hide();
+        }, 2000);
       }, error => console.log(error)
       );
 
