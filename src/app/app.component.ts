@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { DataSubjectService} from './services/dataSubject.service';
-import {Observable,  Subject, Subscription} from 'rxjs';
+import { Subscription} from 'rxjs';
 import { User } from './Interfaces/user';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -21,7 +20,6 @@ export class AppComponent implements OnInit {
     this.spinner.show();
 
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 2000);
   }

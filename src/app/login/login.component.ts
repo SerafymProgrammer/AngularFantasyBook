@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder, FormArray} from '@angular/forms';
-import { DataSubjectService} from '../services/dataSubject.service';
+import { SendEmailToHeaderService} from '../services/send-email-to-header.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ActivatedRoute, ParamMap} from '@angular/router';
@@ -31,7 +31,7 @@ export class AppLoginComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute,
-    private dataService: DataSubjectService,
+    private sendEmailToHeaderService: SendEmailToHeaderService,
     private userService: UserService,
     private spinner: NgxSpinnerService
    ) {
@@ -66,7 +66,6 @@ export class AppLoginComponent implements OnInit {
         this.router.navigate(['/']);
         this.toastr.success('Hello', 'SUCCESS');
         this.decodeToLocalStorage(data);
-        // localStorage.setItem('user', JSON.stringify(Object.assign(data, { email: this.myFirstForm.value.email })));
         localStorage.setItem('basket', JSON.stringify({
           bookArr: [],
           totalBook: {
@@ -74,7 +73,7 @@ export class AppLoginComponent implements OnInit {
             totalPrice: 0
           }
         }));
-        this.dataService.triggerEvent({ email: this.myFirstForm.value.email });
+        this.sendEmailToHeaderService.triggerEvent({ email: this.myFirstForm.value.email });
         this.spinner.hide();
       }, 2000);
 

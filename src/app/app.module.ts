@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule, ControlContainer } from '@angular/forms';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataSubjectService } from './services/dataSubject.service';
+import { SendEmailToHeaderService } from './services/send-email-to-header.service';
 import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './login.guard';
 import { SettingUserInformationComponent } from './setting-user-information/setting-user-information.component';
@@ -76,7 +76,7 @@ import {LoadingBarModule, LoadingBarService} from 'ngx-loading-bar';
     LoadingBarModule
   ],
   entryComponents: [PopupEditUserComponent, PopupAddUserComponent, AddBookComponent, EditBookComponent, PopupBasketComponent],
-  providers: [DataSubjectService, AuthGuard, AuthGuardUser, UserService, BookService, ChooseImageService, {
+  providers: [SendEmailToHeaderService, AuthGuard, AuthGuardUser, UserService, BookService, ChooseImageService, {
     provide: HTTP_INTERCEPTORS,
     useClass: ParamInterceptor,
     multi: true

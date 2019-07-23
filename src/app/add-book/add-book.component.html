@@ -9,24 +9,21 @@
 
   <div>
     <mat-form-field class="example-full-width">
-    <input matInput placeholder="Author" formControlName="author">
-    <mat-hint>Errors appear instantly!</mat-hint>
-  </mat-form-field>
+      <input matInput placeholder="Author" formControlName="author">
+      <mat-hint>Errors appear instantly!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+
+      <input matInput placeholder="Price" formControlName="price">
+      <mat-hint>Errors appear instantly!</mat-hint>
+
+    </mat-form-field>
+  </div>
 
   <mat-form-field>
-
-    <input matInput placeholder="Price" formControlName="price">
-    <mat-hint>Errors appear instantly!</mat-hint>
-
+    <textarea matInput placeholder="Textarea" formControlName="description"></textarea>
   </mat-form-field>
-</div>
-
-<mat-form-field>
-    <textarea matInput placeholder="Textarea"  formControlName="description"></textarea>
-  </mat-form-field>
-
-
-  
 
   <button mat-raised-button (click)="addNewBook()">Add</button>
 

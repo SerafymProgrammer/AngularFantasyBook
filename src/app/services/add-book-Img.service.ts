@@ -4,15 +4,15 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BookElementSubscribeService {
+export class AddBookImgService {
 
   constructor() { }
-
   private dataChange: Subject<any> = new Subject<any>();
   observable = this.dataChange.asObservable();
 
 
-  bookSubscribeEvent(str: {}) {
+  triggerEvent(str: string | ArrayBuffer) {
      this.dataChange.next(str);
   }
+
 }

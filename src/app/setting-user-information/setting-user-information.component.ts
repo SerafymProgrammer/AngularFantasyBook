@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder, FormArray} from '@angular/forms';
-import { DataSubjectService} from '../services/dataSubject.service';
+import { SendEmailToHeaderService} from '../services/send-email-to-header.service';
 import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';
-import { ChooseImageService } from '../services/chooseImage.service';
-import { AddElementService } from '../services/add-element.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 
@@ -29,10 +27,8 @@ export class SettingUserInformationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dataService: DataSubjectService,
+    private dataService: SendEmailToHeaderService,
     private userService: UserService,
-    private chooseImageService: ChooseImageService,
-    private addElementService: AddElementService,
     private spinner: NgxSpinnerService) {
    }
    ngOnInit() {

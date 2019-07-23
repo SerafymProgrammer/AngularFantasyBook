@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder, FormArray} from '@angular/forms';
-import { DataSubjectService} from '../services/dataSubject.service';
+import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../services/user.service';
-import { UserRegister, User} from '../Interfaces/user';
+import { User} from '../Interfaces/user';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
-  providers: [DataSubjectService]
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   users: User[];
@@ -33,7 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this.spinner.show();
+
   }
 
   createForm() {
@@ -54,7 +52,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(() => {
         this.spinner.show();
         setTimeout(() => {
-          /** spinner ends after 5 seconds */
           this.spinner.hide();
           this.router.navigate(['/login', { email: this.myFirstForm.value.email }]);
         }, 2000);

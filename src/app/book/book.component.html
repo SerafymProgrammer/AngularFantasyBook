@@ -12,8 +12,6 @@
         <button (click) = 'addToBasket()' class="buy-book-btn"> Add to basket</button>
     </div>
 
-    
-    
     <div *ngIf = 'book.description' class="book-element-description">
         <p *ngIf='!showAll '>{{book.description | descriptionLenth}}</p>
         <p *ngIf='showAll'>{{book.description}}</p>

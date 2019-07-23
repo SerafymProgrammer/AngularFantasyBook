@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild, Inject, Output, EventEmitter } from '@angular/core';
-import { MatPaginator, MatSort, MatTable, MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import { environment } from 'src/environments/environment';
+import {  Component, OnInit,  Inject, Output, EventEmitter } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { User } from '../Interfaces/user';
 import { UserService } from '../services/user.service';

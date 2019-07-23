@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSubjectService} from '../services/dataSubject.service';
+import { SendEmailToHeaderService} from '../services/send-email-to-header.service';
 import { Router } from '@angular/router';
 import {Subscription} from 'rxjs';
 import { PopupBasketComponent } from '../popup-basket/popup-basket.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { User } from '../Interfaces/user';
 import { Book } from '../Interfaces/book';
 import { BookService } from '../services/book.service';
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private dataSubjectService: DataSubjectService,
+    private sendEmailToHeaderService: SendEmailToHeaderService,
     public dialog: MatDialog,
     private bookService: BookService,
     private totalPriceService: TotalPriceService
@@ -63,7 +63,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.dataSubjectService.observable.subscribe(x => {
+    this.sendEmailToHeaderService.observable.subscribe(x => {
       if (x) {
         this.email = x.email;
         this.isHidden = true;

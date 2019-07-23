@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Book } from '../Interfaces/book';
 import { BookService } from '../services/book.service';
 import { ChooseImageService } from '../services/chooseImage.service';
-import { AddElementService } from '../services/add-element.service';
+import { AddBookImgService } from '../services/add-book-Img.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 
@@ -31,7 +31,7 @@ export class EditBookComponent implements OnInit {
     private bookService: BookService,
     public dialogRef: MatDialogRef<EditBookComponent>,
     private chooseImageService: ChooseImageService,
-    private addElementService: AddElementService,
+    private addBookImgService: AddBookImgService,
     private spinner: NgxSpinnerService,
     @Inject(MAT_DIALOG_DATA) public data) { }
 
@@ -91,7 +91,7 @@ export class EditBookComponent implements OnInit {
 
 
   preview(files) {
-    this.addElementService.observable.subscribe((x) => {
+    this.addBookImgService.observable.subscribe((x) => {
       this.imgURL = x;
     });
     this.chooseImageService.preview(files);

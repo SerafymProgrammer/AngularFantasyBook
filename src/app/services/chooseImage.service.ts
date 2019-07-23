@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AddElementService } from './add-element.service';
+import { AddBookImgService } from './add-book-Img.service';
 
 
 @Injectable()
 export class ChooseImageService {
 
 
-  constructor(private addElementService: AddElementService) {}
+  constructor(private addBookImgService: AddBookImgService) {}
 
   message: string;
   imagePath: any;
@@ -27,7 +27,7 @@ export class ChooseImageService {
     reader.readAsDataURL(files[0]);
     reader.onload = (event) => {
       this.imgURL = reader.result;
-      this.addElementService.triggerEvent(this.imgURL);
+      this.addBookImgService.triggerEvent(this.imgURL);
     };
 
   }

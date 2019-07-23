@@ -25,12 +25,9 @@ export class PopupBasketComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.booksInBasket = this.bookService.totalScoreBooks(JSON.parse(localStorage.getItem('basket')));
-
     this.totalPrice = this.booksInBasket.totalBook.totalPrice;
     this.count = this.booksInBasket.totalBook.totalCount;
-
   }
 
   addBook(book) {

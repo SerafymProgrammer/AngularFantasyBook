@@ -61,12 +61,9 @@ export class BookShopComponent implements OnInit {
   }
 
   addToBasket(book) {
-      // tslint:disable-next-line:prefer-const
       let booksInBasket = JSON.parse(localStorage.getItem('basket'));
-      // tslint:disable-next-line:no-unused-expression
       booksInBasket.bookArr.push(book);
       booksInBasket = this.bookService.totalScoreBooks(booksInBasket);
-     // this.totalPriceService.addPriceEvent(this.totalPrice);
       localStorage.setItem('basket', JSON.stringify(booksInBasket));
     }
 
